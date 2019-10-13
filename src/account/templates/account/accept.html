@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>accept invitation </h2>
+{{ invitation }} <span>from</span>
+
+{{ invitation.from_user.groups.all   }}
+<br>
+<a class="btn btn-secondary" href="#">Accept</a> 
+<a class="btn btn-primary" href="#">Decline</a> 
+
+
+{% endblock  %}

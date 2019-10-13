@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Profile</h1>
+<form method="POST">
+    {% csrf_token %}
+     {{ form.as_p }}
+    <button class="submit-button btn btn-lg btn-primary " type="submit">Create group</button>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+<h3>{{ request.user.username }} group</h3>
+<h3>Group name:{% for i in team %}
+    {{  i }}<br>
+{% endfor %}</h3>
+
+<h1>------------------</h1>
+{% for j in group %}
+    {{ j.username }}<br>
+{% endfor %}
+{{ x }}
+
+{% if num_of_members > 1 %}
+    <h5> {{ num_of_members }} Members of the group:</h5>
+{% else %}
+<h5> {{ num_of_members }} Member  of the group:</h5>
+{% endif %}
+
+
+
+<a class="btn btn-secondary" href="{%  url 'account:invite' %}">Invite</a> 
+<h3>invitations</h3>
+{% for i in invitation %}
+<a  href="{%  url 'account:view' i.id %}">{{ i }}</a><br>
+ {% endfor %}
+
+
+{% endblock %}
+
+

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-4">
+            <form class="form-signin" method="POST">
+
+                <h1 class="h3 mb-3 font-weight-normal">Please  Login</h1>
+                {% csrf_token %}
+                <div class="form-label-group">
+                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                </div>
+        
+                <div class="form-label-group">
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+                    
+            
+                
+                {% for field in login_form %}
+                    {% for error in field.errors %}
+                    <p style="color:aqua"> {{ error }}</p>
+                    {% endfor %}
+                 {% endfor %}
+        
+
+                {% if login_form.non_field_errors %}
+                     {% for i in  login_form.non_field_errors %}
+                     <div style="color:red">
+                     <p>{{ i }}</p>
+                     </div>
+                    {% endfor %}
+                
+                {% endif %}
+        
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+               
+            </form>
+        </div>
+    </div>
+</div>
+
+     
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Home</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <button class="close" data-dismiss="alert"> &times;</button>
+    <li class="alert alert-success">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% for list_of_group in group %}
+<a href="/detail/{{ list_of_group.id }}/" >{{ list_of_group.name  }}</a> <br>
+{% endfor %}
+
+
+
+{% endblock  %}
+
+
